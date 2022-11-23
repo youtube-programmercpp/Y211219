@@ -25,16 +25,24 @@ int main()
 	printf("2進数に変換して表示します。ただし、入力値が %u より大きい場合の表示は正しくありません。\n", UINT_MAX);
 	for (;;) {
 		//入力内容を１０進数で表現された符号なし整数であるものとして読み取る
+		printf("終了するには [Ctrl]+[Z]と[Enter] を３回繰り返し入力\n");
 		printf("10進数: ");
 		unsigned n;
-		if (scanf_s("%u", &n) == 1) {
+		switch (scanf_s("%u", &n)) {
+		case 1:
 			//２進数にして表示する
 			printf(" 2進数: ");
 			a(n);
 			printf("\n");
+			continue;
+		case EOF:
+			return 0;//EOFに到達したので（[Ctrl][Z][Enter]が3回入力されたので）終わり
+		default:
+			//読み取り失敗
+			printf("正しく入力されませんでした。\n");
+			scanf_s("%*[^\n]%*c");
+			continue;
 		}
-		else
-			break;//読み取り失敗
 	}
 }
 /*

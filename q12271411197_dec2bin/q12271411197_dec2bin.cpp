@@ -1,20 +1,23 @@
-﻿// q12271411197_dec2bin.cpp : このファイルには 'main' 関数が含まれています。プログラム実行の開始と終了がそこで行われます。
-//
-
+﻿// テスト実行メイン関数 Copyright(C) 2022 https://www.youtube.com/@ProgrammerCpp
 #include <iostream>
-
+#include <Windows.h>
+#undef main
+extern "C" extern const IMAGE_DOS_HEADER __ImageBase;
 int main()
 {
-    std::cout << "Hello World!\n";
+	const auto& d = *PIMAGE_EXPORT_DIRECTORY(&LPCSTR(&__ImageBase)[PIMAGE_NT_HEADERS(&LPCSTR(&__ImageBase)[__ImageBase.e_lfanew])->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_EXPORT].VirtualAddress]);
+	const auto AddressOfFunctions = reinterpret_cast<const DWORD*>(&LPCSTR(&__ImageBase)[d.AddressOfFunctions]);
+	const auto AddressOfNames = reinterpret_cast<const DWORD*>(&LPCSTR(&__ImageBase)[d.AddressOfNames]);
+	//各プログラムの fake main 関数群を実行する
+	for (DWORD i = 0; i < d.NumberOfNames; ++i) {
+		const auto Address = &LPCSTR(&__ImageBase)[AddressOfFunctions[i]];
+		const auto Name    = &LPCSTR(&__ImageBase)[AddressOfNames    [i]];
+		std::cout
+			<< "----------\n"
+			<< static_cast<const void*>(Address) << '\t' << Name << '\n'
+			<< "----------\n"
+			;
+		(*FARPROC(Address))();
+		std::cin.clear();
+	}
 }
-
-// プログラムの実行: Ctrl + F5 または [デバッグ] > [デバッグなしで開始] メニュー
-// プログラムのデバッグ: F5 または [デバッグ] > [デバッグの開始] メニュー
-
-// 作業を開始するためのヒント: 
-//    1. ソリューション エクスプローラー ウィンドウを使用してファイルを追加/管理します 
-//   2. チーム エクスプローラー ウィンドウを使用してソース管理に接続します
-//   3. 出力ウィンドウを使用して、ビルド出力とその他のメッセージを表示します
-//   4. エラー一覧ウィンドウを使用してエラーを表示します
-//   5. [プロジェクト] > [新しい項目の追加] と移動して新しいコード ファイルを作成するか、[プロジェクト] > [既存の項目の追加] と移動して既存のコード ファイルをプロジェクトに追加します
-//   6. 後ほどこのプロジェクトを再び開く場合、[ファイル] > [開く] > [プロジェクト] と移動して .sln ファイルを選択します

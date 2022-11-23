@@ -21,5 +21,8 @@
     <ClCompile Include="q12271411197_dec2bin_101.c">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="q12271411197_dec2bin_102.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
