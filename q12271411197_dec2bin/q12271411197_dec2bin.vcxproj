@@ -127,6 +127,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DialogBox_ProgramController.cpp" />
+    <ClCompile Include="ExportedFunction.cpp" />
+    <ClCompile Include="ExportedFunctionsFromModule.cpp" />
+    <ClCompile Include="q11271148501_int2bin_101.c" />
+    <ClCompile Include="q11271148501_int2bin_102.cpp" />
+    <ClCompile Include="q11271148501_int2bin_original.c" />
     <ClCompile Include="q12271411197_dec2bin.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
       </ExcludedFromBuild>
@@ -139,6 +145,18 @@
     </ClCompile>
     <ClCompile Include="q12271411197_dec2bin_101.c" />
     <ClCompile Include="q12271411197_dec2bin_102.cpp" />
+    <ClCompile Include="Thread_ProgramExecution.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DialogBox_ProgramController.h" />
+    <ClInclude Include="ExportedFunction.h" />
+    <ClInclude Include="ExportedFunctionsFromModule.h" />
+    <ClInclude Include="ExtendedWindowMessage.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="Thread_ProgramExecution.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="q12271411197_dec2bin.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
