@@ -145,6 +145,11 @@
     </ClCompile>
     <ClCompile Include="q12271411197_dec2bin_101.c" />
     <ClCompile Include="q12271411197_dec2bin_102.cpp" />
+    <ClCompile Include="Test.c" />
+    <ClCompile Include="Test2.c" />
+    <ClCompile Include="Test3.cpp" />
+    <ClCompile Include="Test4.c" />
+    <ClCompile Include="TestCpp.cpp" />
     <ClCompile Include="Thread_ProgramExecution.cpp" />
   </ItemGroup>
   <ItemGroup>
